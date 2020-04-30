@@ -1,4 +1,4 @@
-import Button from "./button";
+import Button from "./button.js";
 
 export default class Dice extends Button {
   constructor(x, y, r, g, b) {

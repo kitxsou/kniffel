@@ -1,4 +1,4 @@
-import Button from "./button";
+import Button from "./button.js";
 
 export default class RollAllButton extends Button {
   constructor(x, y, width, height, title, dice) {
