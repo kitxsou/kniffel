@@ -21,8 +21,16 @@ export default class TableCell extends Button {
       fill(245, 183, 166);
     }
     rect(this.x, this.y, this.width, this.height, 10);
+    push();
+    fill(255);
     textAlign(CENTER);
-    text(this.value, this.x, this.y + 10);
+    if (this.value === 0) {
+      text(" ", this.x, this.y + 10);
+    } else {
+      text(this.value, this.x, this.y + 10);
+    }
+    text(this.eyeNumber, this.x - 100, this.y + 10);
+    pop();
   }
 
   clicked() {
