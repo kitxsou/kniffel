@@ -6,6 +6,7 @@ export default class TableCell extends Button {
     this.dice = dice;
     this.eyeNumber = eyeNumber;
     this.value = 0;
+    this.isCrossed = false;
   }
 
   display() {
@@ -24,7 +25,9 @@ export default class TableCell extends Button {
     push();
     fill(255);
     textAlign(CENTER);
-    if (this.value === 0) {
+    if (this.isCrossed) {
+      text("-", this.x, this.y + 10);
+    } else if (this.value === 0) {
       text(" ", this.x, this.y + 10);
     } else {
       text(this.value, this.x, this.y + 10);
@@ -34,6 +37,12 @@ export default class TableCell extends Button {
   }
 
   clicked() {
+    if (this.value !== 0) {
+      this.isCrossed = true;
+      this.resetDice();
+      return;
+    }
+
     if (!this.canBeFilled()) {
       return;
     }
@@ -47,9 +56,13 @@ export default class TableCell extends Button {
     }
 
     this.value = newValue;
+    this.resetDice();
+  }
 
+  resetDice() {
     for (let currentDice of this.dice) {
       currentDice.value = -1;
+      currentDice.isActive = true;
     }
   }
 

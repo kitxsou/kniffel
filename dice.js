@@ -3,7 +3,7 @@ import Button from "./button.js";
 export default class Dice extends Button {
   constructor(x, y, r, g, b) {
     super(x, y, 150, 150, r, g, b);
-    this.isActive = false;
+    this.isActive = true;
     this.value = -1;
   }
 
@@ -16,9 +16,9 @@ export default class Dice extends Button {
 
     rectMode(CENTER);
     if (this.isActive) {
-      stroke(209, 98, 98);
-    } else {
       stroke(44, 37, 64);
+    } else {
+      stroke(209, 98, 98);
     }
 
     strokeWeight(8);
