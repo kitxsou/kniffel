@@ -11,17 +11,20 @@ export default class Dice extends Button {
   }
 
   display() {
+    this.updatePosition();
+
     rectMode(CENTER);
     if (this.isActive) {
       stroke(209, 98, 98);
     } else {
-      stroke(54, 52, 53);
+      stroke(44, 37, 64);
     }
+
     strokeWeight(8);
     fill(this.r, this.g, this.b);
     rect(this.x, this.y, this.width, this.height, 30);
     noStroke();
-    fill(255, 90);
+    fill(this.r + 30, this.g + 30, this.b + 30);
     rect(this.x, this.y - 35, this.width - 20, this.height - 85, 20);
     fill(255);
     stroke(54, 52, 53);
@@ -43,7 +46,7 @@ export default class Dice extends Button {
   }
 
   displayNumber() {
-    fill(245, 231, 225);
+    fill(255);
     stroke(54, 52, 53);
     strokeWeight(5);
 

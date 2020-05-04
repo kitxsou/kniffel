@@ -1,6 +1,7 @@
 export default class Button {
-  constructor(x, y, width, height, r, g, b) {
-    this.x = x;
+  constructor(xOffset, y, width, height, r, g, b) {
+    this.xOffset = xOffset;
+    this.x = 0;
     this.y = y;
     this.width = width;
     this.height = height;
@@ -9,7 +10,13 @@ export default class Button {
     this.b = b;
   }
 
+  updatePosition() {
+    this.x = windowWidth / 2 + this.xOffset;
+  }
+
   display() {
+    this.updatePosition();
+
     rectMode(CENTER);
     fill(this.r, this.g, this.b);
     rect(this.x, this.y, this.width, this.height);
