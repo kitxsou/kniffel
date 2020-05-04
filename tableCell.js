@@ -39,6 +39,10 @@ export default class TableCell extends Button {
     }
 
     this.value = newValue;
+
+    for (let currentDice of this.dice) {
+      currentDice.value = -1;
+    }
   }
 
   canBeFilled() {

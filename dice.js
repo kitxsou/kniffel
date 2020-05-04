@@ -4,6 +4,7 @@ export default class Dice extends Button {
   constructor(x, y, r, g, b) {
     super(x, y, 150, 150, r, g, b);
     this.isActive = false;
+    this.value = -1;
   }
 
   roll() {
@@ -62,7 +63,7 @@ export default class Dice extends Button {
       this.display5();
     } else if (this.value === 6) {
       this.display6();
-    } else {
+    } else if (this.value === -1) {
       this.displayQuestionMark();
     }
   }
