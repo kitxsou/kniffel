@@ -14,20 +14,43 @@ export default class TableCell extends Button {
     rectMode(CENTER);
     stroke(44, 37, 64);
     strokeWeight(6);
-    fill(255);
+
+    if (this.canBeFilled()) {
+      fill(169, 198, 245);
+    } else {
+      fill(245, 183, 166);
+    }
     rect(this.x, this.y, this.width, this.height, 10);
     textAlign(CENTER);
     text(this.value, this.x, this.y + 10);
   }
 
   clicked() {
-    let value = 0;
+    if (!this.canBeFilled()) {
+      return;
+    }
+
+    let newValue = 0;
+
     for (let currentDice of this.dice) {
       if (currentDice.value === this.eyeNumber) {
-        value += this.eyeNumber;
+        newValue += this.eyeNumber;
       }
     }
 
-    this.value = value;
+    this.value = newValue;
+  }
+
+  canBeFilled() {
+    if (this.value !== 0) {
+      return false;
+    }
+
+    for (let currentDice of this.dice) {
+      if (currentDice.value === this.eyeNumber) {
+        return true;
+      }
+    }
+    return false;
   }
 }
