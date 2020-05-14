@@ -2,7 +2,7 @@ import Button from "./button.js";
 
 export default class TableCell extends Button {
   constructor(x, y, dice, eyeNumber) {
-    super(x, y, 50, 50);
+    super(x, y, 35, 25);
     this.dice = dice;
     this.eyeNumber = eyeNumber;
     this.value = 0;
@@ -23,24 +23,25 @@ export default class TableCell extends Button {
     } else {
       fill(245, 183, 166);
     }
-    noStroke();
 
-    rect(this.x, this.y, this.width, this.height, 8);
-    fill(255);
+    noStroke();
+    rect(this.x, this.y, this.width, this.height, 7);
+    fill(44, 37, 64);
     textAlign(CENTER);
-    textSize(30);
+    textSize(20);
     if (this.isCrossed) {
-      text("-", this.x, this.y + 10);
+      text("-", this.x, this.y + 7);
     } else if (this.value === 0) {
-      text(" ", this.x, this.y + 10);
+      text(" ", this.x, this.y + 7);
     } else {
-      text(this.value, this.x, this.y + 10);
+      text(this.value, this.x, this.y + 7);
     }
     //fill(56, 44, 41);
+    textAlign(LEFT);
     fill(232, 223, 213);
     noStroke();
-    textSize(40);
-    text(this.eyeNumber, this.x - 100, this.y + 10);
+    textSize(20);
+    text(this.eyeNumber, this.x - 200, this.y + 7);
     pop();
   }
 
