@@ -19,10 +19,10 @@ export default class RollAllButton extends Button {
     noStroke();
     fill(255);
     rect(this.x, this.y - 9, this.width - 13, this.height - 30, 25);
-    fill(255);
-    stroke(0);
+    fill(44, 37, 64);
+    // stroke(0);
     textAlign(CENTER);
-    textSize(25);
+    textSize(30);
     text(this.title, this.x, this.y);
   }
 

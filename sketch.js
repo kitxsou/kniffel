@@ -10,18 +10,26 @@ let allDice = [
   new Dice(0 + 90, 280, 255, 197, 161),
 ];
 
-let rollAllButton = new RollAllButton(0, 450, 200, 80, "roll", allDice);
+let rollAllButton = new RollAllButton(0, 450, 220, 90, "roll", allDice);
 
 let tableCells = [
-  new TableCell(-650, windowHeight / 3, allDice, 1),
-  new TableCell(-650, windowHeight / 3 + 80, allDice, 2),
-  new TableCell(-650, windowHeight / 3 + 160, allDice, 3),
-  new TableCell(-650, windowHeight / 3 + 240, allDice, 4),
-  new TableCell(-650, windowHeight / 3 + 320, allDice, 5),
-  new TableCell(-650, windowHeight / 3 + 400, allDice, 6),
+  new TableCell(-650, windowHeight / 4, allDice, 1),
+  new TableCell(-650, windowHeight / 4 + 70, allDice, 2),
+  new TableCell(-650, windowHeight / 4 + 140, allDice, 3),
+  new TableCell(-650, windowHeight / 4 + 210, allDice, 4),
+  new TableCell(-650, windowHeight / 4 + 280, allDice, 5),
+  new TableCell(-650, windowHeight / 4 + 350, allDice, 6),
 ];
 
+var myFont;
+
+window.preload = function () {
+  myFont = loadFont("assets/Montserrat-ExtraBold.ttf");
+};
+
 window.draw = function () {
+  textFont(myFont);
+
   background(87, 71, 67);
 
   rollAllButton.display();
@@ -52,6 +60,6 @@ function table() {
   fill(56, 44, 41);
   strokeWeight(8);
   stroke(232, 223, 213);
-  rect(windowWidth / 2 - 600, (windowHeight / 4) * 2.1, 400, 650, 40);
+  rect(windowWidth / 2 - 600, (windowHeight / 4) * 1.9, 400, 650, 40);
   line();
 }

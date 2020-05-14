@@ -69,10 +69,14 @@ export default class Dice extends Button {
   }
 
   displayQuestionMark() {
+    noStroke();
     textAlign(CENTER);
     strokeWeight(7);
-    textSize(40);
+    textSize(50);
+    fill(112, 104, 94);
     text("?", this.x, this.y - 20);
+    fill(255);
+    text("?", this.x, this.y - 24);
   }
 
   display1() {
