@@ -13,7 +13,8 @@ export default class TableCell extends Button {
     this.updatePosition();
 
     rectMode(CENTER);
-    stroke(44, 37, 64);
+    stroke(232, 223, 213);
+    // stroke(44, 37, 64);
     strokeWeight(6);
 
     if (this.canBeFilled()) {
@@ -32,6 +33,7 @@ export default class TableCell extends Button {
     } else {
       text(this.value, this.x, this.y + 10);
     }
+    fill(56, 44, 41);
     text(this.eyeNumber, this.x - 100, this.y + 10);
     pop();
   }

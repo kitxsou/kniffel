@@ -13,18 +13,19 @@ let allDice = [
 let rollAllButton = new RollAllButton(0, 450, 200, 80, "roll", allDice);
 
 let tableCells = [
-  new TableCell(300, windowHeight / 3, allDice, 1),
-  new TableCell(300, windowHeight / 3 + 80, allDice, 2),
-  new TableCell(300, windowHeight / 3 + 160, allDice, 3),
-  new TableCell(300, windowHeight / 3 + 240, allDice, 4),
-  new TableCell(300, windowHeight / 3 + 320, allDice, 5),
-  new TableCell(300, windowHeight / 3 + 400, allDice, 6),
+  new TableCell(-650, windowHeight / 3, allDice, 1),
+  new TableCell(-650, windowHeight / 3 + 80, allDice, 2),
+  new TableCell(-650, windowHeight / 3 + 160, allDice, 3),
+  new TableCell(-650, windowHeight / 3 + 240, allDice, 4),
+  new TableCell(-650, windowHeight / 3 + 320, allDice, 5),
+  new TableCell(-650, windowHeight / 3 + 400, allDice, 6),
 ];
 
 window.draw = function () {
   background(87, 71, 67);
 
   rollAllButton.display();
+  table();
 
   for (var currentTableCell of tableCells) {
     currentTableCell.display();
@@ -33,7 +34,6 @@ window.draw = function () {
   for (var currentDice of allDice) {
     currentDice.display();
   }
-  // windowResized();
 };
 
 window.mouseClicked = function () {
@@ -47,6 +47,11 @@ window.mouseClicked = function () {
   }
 };
 
-function windowResized() {
-  resizeCanvas(width, height);
+function table() {
+  rectMode(CENTER);
+  fill(56, 44, 41);
+  strokeWeight(8);
+  stroke(232, 223, 213);
+  rect(windowWidth / 2 - 600, (windowHeight / 4) * 2.1, 400, 650, 40);
+  line();
 }
