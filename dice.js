@@ -5,6 +5,9 @@ export default class Dice extends Button {
     super(x, y, 150, 150, r, g, b);
     this.isActive = true;
     this.value = -1;
+    this.isFloatingDown = true;
+    this.originalY = this.y;
+    this.shadowWidth = this.width;
   }
 
   roll() {
@@ -14,6 +17,7 @@ export default class Dice extends Button {
   display() {
     this.updatePosition();
 
+    push();
     rectMode(CENTER);
     if (this.isActive) {
       stroke(44, 37, 64);
@@ -42,11 +46,16 @@ export default class Dice extends Button {
       line(this.x - 20, this.y + 45, this.x + 20, this.y + 45);
     }
     stroke(255);
-
     this.displayNumber();
+
+    noStroke();
+    fill(56, 44, 41);
+    ellipse(this.x, this.originalY + 130, this.shadowWidth - 50, 30);
+    pop();
   }
 
   displayNumber() {
+    push();
     fill(255);
     stroke(54, 52, 53);
     strokeWeight(5);
@@ -66,9 +75,11 @@ export default class Dice extends Button {
     } else if (this.value === -1) {
       this.displayQuestionMark();
     }
+    pop();
   }
 
   displayQuestionMark() {
+    push();
     noStroke();
     textAlign(CENTER);
     strokeWeight(7);
@@ -77,6 +88,7 @@ export default class Dice extends Button {
     text("?", this.x, this.y - 20);
     fill(255);
     text("?", this.x, this.y - 24);
+    pop();
   }
 
   display1() {
@@ -112,5 +124,23 @@ export default class Dice extends Button {
 
   clicked() {
     this.isActive = !this.isActive;
+  }
+
+  float() {
+    if (this.isFloatingDown) {
+      this.y += 0.4;
+      this.shadowWidth++;
+    } else {
+      this.y -= 0.4;
+      this.shadowWidth--;
+    }
+    if (this.y >= this.originalY + 10) {
+      this.isFloatingDown = false;
+    }
+
+    if (this.y <= this.originalY) {
+      this.isFloatingDown = true;
+    }
+    console.log(this.y, this.orignalY, this.isFloatingDown);
   }
 }

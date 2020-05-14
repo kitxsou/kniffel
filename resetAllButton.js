@@ -1,6 +1,6 @@
 import Button from "./button.js";
 
-export default class RollAllButton extends Button {
+export default class ResetAllButton extends Button {
   constructor(x, y, width, height, title, dice) {
     super(x, y, width, height);
 

@@ -12,6 +12,7 @@ export default class TableCell extends Button {
   display() {
     this.updatePosition();
 
+    push();
     rectMode(CENTER);
     //stroke(232, 223, 213);
     // stroke(44, 37, 64);
@@ -24,7 +25,7 @@ export default class TableCell extends Button {
     }
     noStroke();
 
-    rect(this.x, this.y, this.width, this.height, 10);
+    rect(this.x, this.y, this.width, this.height, 8);
     fill(255);
     textAlign(CENTER);
     textSize(30);
@@ -40,6 +41,7 @@ export default class TableCell extends Button {
     noStroke();
     textSize(40);
     text(this.eyeNumber, this.x - 100, this.y + 10);
+    pop();
   }
 
   clicked() {

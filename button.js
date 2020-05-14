@@ -17,9 +17,11 @@ export default class Button {
   display() {
     this.updatePosition();
 
+    push();
     rectMode(CENTER);
     fill(this.r, this.g, this.b);
     rect(this.x, this.y, this.width, this.height);
+    pop();
   }
 
   hitTest(x, y) {
