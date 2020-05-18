@@ -27,6 +27,8 @@ let tableCells = [
 ];
 
 var myFont;
+var topColor = color(117, 143, 189); //87, 71, 67
+var bottomColor = color(217, 150, 181);
 
 window.preload = function () {
   myFont = loadFont("assets/Montserrat-ExtraBold.ttf");
@@ -35,11 +37,15 @@ window.preload = function () {
 window.draw = function () {
   textFont(myFont);
 
-  background(87, 71, 67);
+  background(95, 72, 117);
+  //87, 71, 67
+
+  gradient(topColor, bottomColor);
 
   rollAllButton.display();
   resetAllButton.display();
   table();
+  //cloud();
 
   for (var currentTableCell of tableCells) {
     currentTableCell.display();
@@ -65,12 +71,40 @@ window.mouseClicked = function () {
 function table() {
   push();
   rectMode(CENTER);
-  fill(56, 44, 41);
+  fill(46, 47, 105, 80); //56, 44, 41
   strokeWeight(8);
-  stroke(232, 223, 213);
+  stroke(255);
   rect(windowWidth / 2 - 600, windowHeight / 2, 400, 800, 40);
   strokeWeight(4);
   stroke(255);
   line(510, windowHeight / 5 + 235, 200, windowHeight / 5 + 235);
+  pop();
+}
+
+function gradient(topColor, bottomColor) {
+  push();
+  var startColor = topColor;
+  var endColor = bottomColor;
+  var gradientX = 0; //
+  var gradientY = 0; // rectangle of gradient box
+  var w = width; //
+  var h = height; //
+
+  for (var i = gradientY; i <= gradientY + h; i = i + 1.0) {
+    var gradientProgress = map(i, gradientY, gradientY + h, 0, 0.9);
+    var gradientColor = lerpColor(startColor, endColor, gradientProgress);
+    stroke(gradientColor);
+    line(gradientX, i, gradientX + w, i);
+  }
+  pop();
+}
+
+function cloud() {
+  push();
+  noStroke();
+  fill(255);
+  ellipse(width / 2, height / 2 - 130, 600, 400);
+  ellipse(width / 2 - 250, height / 2 - 50, 400, 200);
+  ellipse(width / 2 + 250, height / 2 - 50, 400, 200);
   pop();
 }

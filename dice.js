@@ -49,7 +49,7 @@ export default class Dice extends Button {
     this.displayNumber();
 
     noStroke();
-    fill(56, 44, 41);
+    fill(71, 71, 112); //56, 44, 41
     ellipse(this.x, this.originalY + 130, this.shadowWidth - 50, 30);
     pop();
   }
