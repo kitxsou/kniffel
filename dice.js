@@ -141,6 +141,6 @@ export default class Dice extends Button {
     if (this.y <= this.originalY) {
       this.isFloatingDown = true;
     }
-    console.log(this.y, this.orignalY, this.isFloatingDown);
+    //console.log(this.y, this.orignalY, this.isFloatingDown);
   }
 }
