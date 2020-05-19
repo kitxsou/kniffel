@@ -2,7 +2,7 @@ import Dice from "../dice.js";
 import RollAllButton from "../rollAllButton.js";
 import ResetAllButton from "../resetAllButton.js";
 import TableCell from "../tableCell.js";
-import { myFont, setCurrentScreen } from "../sketch.js";
+import { myFont, setCurrentScreen, mainFont } from "../sketch.js";
 
 export let allDice = [
   new Dice(0 - 180, 240, 155, 135, 204),
@@ -56,6 +56,13 @@ function table() {
   strokeWeight(4);
   stroke(255);
   line(510, windowHeight / 5 + 235, 200, windowHeight / 5 + 235);
+
+  noStroke();
+  textFont(mainFont);
+  textSize(50);
+  textAlign(CENTER);
+  fill(255);
+  text("score table", windowWidth / 2 - 600, windowHeight / 7);
   pop();
 }
 
@@ -94,9 +101,7 @@ export default function () {
 
   textFont(myFont);
 
-  background(95, 72, 117);
-
-  console.log("Count: " + count);
+  // background(95, 72, 117);
   //87, 71, 67
 
   gradient(topColor, bottomColor);

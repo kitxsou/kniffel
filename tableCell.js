@@ -39,7 +39,7 @@ export default class TableCell extends Button {
     }
     //fill(56, 44, 41);
     textAlign(LEFT);
-    fill(232, 223, 213);
+    fill(255);
     noStroke();
     textSize(20);
     text(this.eyeNumber, this.x - 200, this.y + 7);

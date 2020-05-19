@@ -1,5 +1,6 @@
 import Button from "./button.js";
 import { increaseCount } from "./screens/gameScreen.js";
+import { myFont } from "../sketch.js";
 
 export default class RollAllButton extends Button {
   constructor(x, y, width, height, title, dice) {
@@ -22,8 +23,8 @@ export default class RollAllButton extends Button {
     fill(255);
     rect(this.x, this.y - 9, this.width - 13, this.height - 30, 25);
     fill(44, 37, 64);
-    // stroke(0);
     textAlign(CENTER);
+    textFont(myFont);
     textSize(30);
     text(this.title, this.x, this.y);
     pop();

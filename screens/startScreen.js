@@ -1,5 +1,5 @@
 import Button from "../button.js";
-import { setCurrentScreen } from "../sketch.js";
+import { setCurrentScreen, mainFont } from "../sketch.js";
 
 export default function () {
   push();
@@ -27,10 +27,10 @@ class StartButton extends Button {
     noStroke();
     fill(255);
     rect(this.x, this.y - 9, this.width - 13, this.height - 30, 25);
-    fill(44, 37, 64);
-    // stroke(0);
+    fill(219, 125, 204);
     textAlign(CENTER);
     textSize(30);
+    textFont(mainFont);
     text("start game", this.x, this.y);
     pop();
   }

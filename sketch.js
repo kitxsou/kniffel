@@ -9,6 +9,7 @@ import {
 } from "./screens/gameScreen.js";
 
 export var myFont;
+export var mainFont;
 var currentScreen = "start";
 
 export function setCurrentScreen(newScreen) {
@@ -17,6 +18,7 @@ export function setCurrentScreen(newScreen) {
 
 window.preload = function () {
   myFont = loadFont("assets/Montserrat-ExtraBold.ttf");
+  mainFont = loadFont("assets/Subway-Black.ttf");
 };
 
 window.draw = function () {
