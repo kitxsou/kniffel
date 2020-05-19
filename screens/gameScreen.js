@@ -2,7 +2,7 @@ import Dice from "../dice.js";
 import RollAllButton from "../rollAllButton.js";
 import ResetAllButton from "../resetAllButton.js";
 import TableCell from "../tableCell.js";
-import { myFont } from "../sketch.js";
+import { myFont, setCurrentScreen } from "../sketch.js";
 
 export let allDice = [
   new Dice(0 - 180, 240, 155, 135, 204),
@@ -29,9 +29,9 @@ export let tableCells = [
   new TableCell(-550, windowHeight / 5 + 90, allDice, 4),
   new TableCell(-550, windowHeight / 5 + 120, allDice, 5),
   new TableCell(-550, windowHeight / 5 + 150, allDice, 6),
-  new TableCell(-550, windowHeight / 5 + 180, allDice, "total score"),
-  new TableCell(-550, windowHeight / 5 + 210, allDice, "bonus"),
-  new TableCell(-550, windowHeight / 5 + 260, allDice, "total upper"),
+  // new TableCell(-550, windowHeight / 5 + 180, allDice, "total score"),
+  // new TableCell(-550, windowHeight / 5 + 210, allDice, "bonus"),
+  // new TableCell(-550, windowHeight / 5 + 260, allDice, "total upper"),
 ];
 
 var topColor = color(117, 143, 189); //87, 71, 67
@@ -79,6 +79,10 @@ function cloud() {
 }
 
 export default function () {
+  if (hasFinished()) {
+    setCurrentScreen("end");
+  }
+
   textFont(myFont);
 
   background(95, 72, 117);
@@ -99,4 +103,13 @@ export default function () {
     currentDice.display();
     currentDice.float();
   }
+}
+
+function hasFinished() {
+  for (var currentTableCell of tableCells) {
+    if (currentTableCell.value === 0 && !currentTableCell.isCrossed) {
+      return false;
+    }
+  }
+  return true;
 }
