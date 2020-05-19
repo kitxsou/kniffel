@@ -1,4 +1,5 @@
 import Button from "./button.js";
+import { clearCount } from "./screens/gameScreen.js";
 
 export default class TableCell extends Button {
   constructor(x, y, dice, eyeNumber) {
@@ -73,6 +74,8 @@ export default class TableCell extends Button {
       currentDice.value = -1;
       currentDice.isActive = true;
     }
+
+    clearCount();
   }
 
   canBeFilled() {

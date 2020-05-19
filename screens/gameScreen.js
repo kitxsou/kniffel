@@ -36,6 +36,15 @@ export let tableCells = [
 
 var topColor = color(117, 143, 189); //87, 71, 67
 var bottomColor = color(217, 150, 181);
+var count = 0;
+
+export function clearCount() {
+  count = 0;
+}
+
+export function increaseCount() {
+  count++;
+}
 
 function table() {
   push();
@@ -86,11 +95,15 @@ export default function () {
   textFont(myFont);
 
   background(95, 72, 117);
+
+  console.log("Count: " + count);
   //87, 71, 67
 
   gradient(topColor, bottomColor);
 
-  rollAllButton.display();
+  if (count < 3) {
+    rollAllButton.display();
+  }
   resetAllButton.display();
   table();
   //cloud();

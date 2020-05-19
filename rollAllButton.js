@@ -1,4 +1,5 @@
 import Button from "./button.js";
+import { increaseCount } from "./screens/gameScreen.js";
 
 export default class RollAllButton extends Button {
   constructor(x, y, width, height, title, dice) {
@@ -34,5 +35,7 @@ export default class RollAllButton extends Button {
         currentDice.roll();
       }
     }
+
+    increaseCount();
   }
 }
