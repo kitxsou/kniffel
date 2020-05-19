@@ -12,7 +12,7 @@ export default class ResetAllButton extends Button {
     this.updatePosition();
 
     push();
-    stroke(44, 37, 64);
+    stroke(59, 50, 84);
     strokeWeight(8);
     rectMode(CENTER);
     fill(168, 216, 234);
@@ -21,7 +21,6 @@ export default class ResetAllButton extends Button {
     fill(255);
     rect(this.x, this.y - 9, this.width - 13, this.height - 30, 25);
     fill(44, 37, 64);
-    // stroke(0);
     textAlign(CENTER);
     textSize(30);
     text(this.title, this.x, this.y);

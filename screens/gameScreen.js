@@ -35,7 +35,7 @@ export let tableCells = [
 ];
 
 var topColor = color(117, 143, 189); //87, 71, 67
-var bottomColor = color(217, 150, 181);
+var bottomColor = color(224, 146, 182);
 var count = 0;
 
 export function clearCount() {
@@ -88,9 +88,9 @@ function cloud() {
   push();
   noStroke();
   fill(255);
-  ellipse(width / 2, height / 2 - 130, 600, 400);
-  ellipse(width / 2 - 250, height / 2 - 50, 400, 200);
-  ellipse(width / 2 + 250, height / 2 - 50, 400, 200);
+  ellipse(width / 2, (height / 8) * 7, 200, 100);
+  ellipse(width / 2 - 250, (height / 8) * 7, 100, 50);
+  ellipse(width / 2 + 250, (height / 8) * 7, 100, 50);
   pop();
 }
 

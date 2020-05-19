@@ -5,7 +5,7 @@ export default function () {
   push();
   fill(0);
   textSize(100);
-  text("START", width / 2, height / 2);
+  //text("START", width / 2, height / 2);
   startButton.display();
   pop();
 }
@@ -40,4 +40,4 @@ class StartButton extends Button {
   }
 }
 
-export let startButton = new StartButton(0, 500);
+export let startButton = new StartButton(0, windowHeight / 2 - 50);

@@ -1,4 +1,6 @@
 import Button from "./button.js";
+import { myFont } from "../sketch.js";
+import { mainFont } from "./sketch.js";
 
 export default class Dice extends Button {
   constructor(x, y, r, g, b) {
@@ -20,9 +22,9 @@ export default class Dice extends Button {
     push();
     rectMode(CENTER);
     if (this.isActive) {
-      stroke(44, 37, 64);
+      stroke(59, 50, 84);
     } else {
-      stroke(209, 98, 98);
+      stroke(209, 98, 124);
     }
 
     strokeWeight(8);
@@ -32,7 +34,7 @@ export default class Dice extends Button {
     fill(this.r + 30, this.g + 30, this.b + 30);
     rect(this.x, this.y - 35, this.width - 20, this.height - 85, 20);
     fill(255);
-    stroke(54, 52, 53);
+    stroke(59, 50, 84);
     point(this.x - 40, this.y + 35);
     point(this.x + 40, this.y + 35);
     if (this.value === 1 || this.value === 6) {
@@ -83,6 +85,7 @@ export default class Dice extends Button {
     noStroke();
     textAlign(CENTER);
     strokeWeight(7);
+    textFont(mainFont);
     textSize(50);
     fill(112, 104, 94);
     text("?", this.x, this.y - 20);

@@ -14,7 +14,7 @@ export default class RollAllButton extends Button {
     this.updatePosition();
 
     push();
-    stroke(44, 37, 64);
+    stroke(59, 50, 84);
     strokeWeight(8);
     rectMode(CENTER);
     fill(168, 216, 234);
