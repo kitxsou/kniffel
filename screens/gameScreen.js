@@ -4,7 +4,7 @@ import TableCell from "../tableCell.js";
 import { myFont, setCurrentScreen, mainFont } from "../sketch.js";
 import BaseTableCell from "../baseTableCell.js";
 import { RestartButton } from "./endScreen.js";
-import { BasicClickTableCell } from "../lowerTableCell.js";
+import { LowerTableCell } from "../lowerTableCell.js";
 
 export let allDice = [
   new Dice(0 - 180, 240, 155, 135, 204),
@@ -202,7 +202,7 @@ function hasAtLeast(min, diceCount) {
   return false;
 }
 
-export let threeOfAKindCell = new BasicClickTableCell(
+export let threeOfAKindCell = new LowerTableCell(
   -500,
   windowHeight / 5 + 310,
   allDice,
@@ -210,19 +210,19 @@ export let threeOfAKindCell = new BasicClickTableCell(
   hasAtleast3
 );
 
-export let fourOfAKindCell = new BasicClickTableCell(
+export let fourOfAKindCell = new LowerTableCell(
   -500,
-  windowHeight / 5 + 370,
+  windowHeight / 5 + 340,
   allDice,
   "4 of a kind",
   hasAtleast4
 );
 
-export let chanceCell = new BasicClickTableCell(
+export let chanceCell = new LowerTableCell(
   -500,
   windowHeight / 5 + 370,
   allDice,
-  "4 of a kind",
+  "chance",
   function () {
     return true;
   }

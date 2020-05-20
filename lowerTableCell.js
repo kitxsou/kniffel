@@ -1,7 +1,7 @@
 import Button from "./button.js";
 import { clearCount } from "./screens/gameScreen.js";
 
-export class BasicClickTableCell extends Button {
+export class LowerTableCell extends Button {
   constructor(x, y, dice, title, canBeFilled) {
     super(x, y, 35, 25);
     this.dice = dice;
