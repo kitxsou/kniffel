@@ -3,6 +3,7 @@ import RollAllButton from "../rollAllButton.js";
 import ResetAllButton from "../resetAllButton.js";
 import TableCell from "../tableCell.js";
 import { myFont, setCurrentScreen, mainFont } from "../sketch.js";
+import SumTableCell from "../SumTableCell.js";
 
 export let allDice = [
   new Dice(0 - 180, 240, 155, 135, 204),
@@ -34,9 +35,11 @@ export let tableCells = [
   // new TableCell(-550, windowHeight / 5 + 260, allDice, "total upper"),
 ];
 
-var topColor = color(117, 143, 189); //87, 71, 67
-var bottomColor = color(224, 146, 182);
-var count = 0;
+let sumTableCell = new SumTableCell(-550, windowHeight / 5 + 180, tableCells);
+
+let topColor = color(117, 143, 189); //87, 71, 67
+let bottomColor = color(224, 146, 182);
+let count = 0;
 
 export function clearCount() {
   count = 0;
@@ -116,6 +119,8 @@ export default function () {
   for (var currentTableCell of tableCells) {
     currentTableCell.display();
   }
+
+  sumTableCell.display();
 
   for (var currentDice of allDice) {
     currentDice.display();
