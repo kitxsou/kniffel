@@ -1,6 +1,6 @@
 import drawStartScreen, { startButton } from "./screens/startScreen.js";
 import drawGameScreen from "./screens/gameScreen.js";
-import drawEndScreen from "./screens/endScreen.js";
+import drawEndScreen, { restartButton } from "./screens/endScreen.js";
 import {
   allDice,
   rollAllButton,
@@ -40,7 +40,7 @@ window.mouseClicked = function () {
     currentTableCell.mouseClicked();
   }
 
-  resetAllButton.mouseClicked();
   rollAllButton.mouseClicked();
   startButton.mouseClicked();
+  restartButton.mouseClicked();
 };

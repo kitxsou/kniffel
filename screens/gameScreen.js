@@ -3,7 +3,7 @@ import RollAllButton from "../rollAllButton.js";
 import ResetAllButton from "../resetAllButton.js";
 import TableCell from "../tableCell.js";
 import { myFont, setCurrentScreen, mainFont } from "../sketch.js";
-import SumTableCell from "../SumTableCell.js";
+import BaseTableCell from "../baseTableCell.js";
 
 export let allDice = [
   new Dice(0 - 180, 240, 155, 135, 204),
@@ -24,18 +24,35 @@ export let resetAllButton = new ResetAllButton(
 );
 
 export let tableCells = [
-  new TableCell(-550, windowHeight / 5, allDice, 1),
-  new TableCell(-550, windowHeight / 5 + 30, allDice, 2),
-  new TableCell(-550, windowHeight / 5 + 60, allDice, 3),
-  new TableCell(-550, windowHeight / 5 + 90, allDice, 4),
-  new TableCell(-550, windowHeight / 5 + 120, allDice, 5),
-  new TableCell(-550, windowHeight / 5 + 150, allDice, 6),
-  // new TableCell(-550, windowHeight / 5 + 180, allDice, "total score"),
-  // new TableCell(-550, windowHeight / 5 + 210, allDice, "bonus"),
-  // new TableCell(-550, windowHeight / 5 + 260, allDice, "total upper"),
+  new TableCell(-500, windowHeight / 5, allDice, 1),
+  new TableCell(-500, windowHeight / 5 + 30, allDice, 2),
+  new TableCell(-500, windowHeight / 5 + 60, allDice, 3),
+  new TableCell(-500, windowHeight / 5 + 90, allDice, 4),
+  new TableCell(-500, windowHeight / 5 + 120, allDice, 5),
+  new TableCell(-500, windowHeight / 5 + 150, allDice, 6),
+  // new TableCell(-500, windowHeight / 5 + 180, allDice, "total score"),
+  // new TableCell(-500, windowHeight / 5 + 210, allDice, "bonus"),
+  // new TableCell(-500, windowHeight / 5 + 260, allDice, "total upper"),
 ];
 
-let sumTableCell = new SumTableCell(-550, windowHeight / 5 + 180, tableCells);
+let sumTableCell = new BaseTableCell(
+  -500,
+  windowHeight / 5 + 180,
+  "total score",
+  sumOfAllTableCells
+);
+let bonusTableCell = new BaseTableCell(
+  -500,
+  windowHeight / 5 + 210,
+  "bonus",
+  addBonusToSum
+);
+let totalUpperTableCell = new BaseTableCell(
+  -500,
+  windowHeight / 5 + 260,
+  "total upper",
+  totalUpperSum
+);
 
 let topColor = color(117, 143, 189); //87, 71, 67
 let bottomColor = color(224, 146, 182);
@@ -118,8 +135,6 @@ export default function () {
   gradient(topColor, bottomColor);
 
   rollAllButton.display();
-
-  resetAllButton.display();
   table();
   //cloud();
 
@@ -128,6 +143,8 @@ export default function () {
   }
 
   sumTableCell.display();
+  bonusTableCell.display();
+  totalUpperTableCell.display();
 
   for (var currentDice of allDice) {
     currentDice.display();
@@ -142,4 +159,26 @@ function hasFinished() {
     }
   }
   return true;
+}
+function sumOfAllTableCells() {
+  let sum = 0;
+  for (let currentTableCell of tableCells) {
+    if (!currentTableCell.isCrossed) {
+      sum += currentTableCell.value;
+    }
+  }
+  return sum;
+}
+
+function addBonusToSum() {
+  let sum = sumOfAllTableCells();
+  if (sum >= 63) {
+    return 35;
+  } else {
+    return 0;
+  }
+}
+
+function totalUpperSum() {
+  return sumOfAllTableCells() + addBonusToSum();
 }

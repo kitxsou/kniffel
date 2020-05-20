@@ -42,7 +42,7 @@ export default class TableCell extends Button {
     fill(255);
     noStroke();
     textSize(20);
-    text(this.eyeNumber, this.x - 200, this.y + 7);
+    text(this.eyeNumber, this.x - 230, this.y + 7);
     pop();
   }
 
