@@ -148,6 +148,10 @@ export default function () {
   totalUpperTableCell.display();
   threeOfAKindCell.display();
   fourOfAKindCell.display();
+  chanceCell.display();
+  kniffelCell.display();
+  smallStraightCell.display();
+  longStraightCell.display();
 }
 
 function hasFinished() {
@@ -198,7 +202,6 @@ function hasAtLeast(min, diceCount) {
       return true;
     }
   }
-
   return false;
 }
 
@@ -228,6 +231,28 @@ export let chanceCell = new LowerTableCell(
   }
 );
 
+export let kniffelCell = new LowerTableCell(
+  -500,
+  windowHeight / 5 + 400,
+  allDice,
+  "kniffel",
+  kniffel
+);
+export let smallStraightCell = new LowerTableCell(
+  -500,
+  windowHeight / 5 + 430,
+  allDice,
+  "small straight",
+  smallStraight
+);
+export let longStraightCell = new LowerTableCell(
+  -500,
+  windowHeight / 5 + 460,
+  allDice,
+  "long straight",
+  longStraight
+);
+
 function hasAtleast3() {
   return hasAtLeast(3, countDice(allDice));
 }
@@ -251,7 +276,11 @@ function smallStraight() {
     (diceCount[2] > 0 &&
       diceCount[3] > 0 &&
       diceCount[4] > 0 &&
-      diceCount[5] > 0)
+      diceCount[5] > 0) ||
+    (diceCount[3] > 0 &&
+      diceCount[4] > 0 &&
+      diceCount[5] > 0 &&
+      diceCount[6] > 0)
   ) {
     return true;
   }
@@ -263,11 +292,16 @@ function longStraight() {
   let diceCount = countDice(allDice);
 
   if (
-    diceCount[1] > 0 &&
-    diceCount[2] > 0 &&
-    diceCount[3] > 0 &&
-    diceCount[4] > 0 &&
-    diceCount[5] > 0
+    (diceCount[1] > 0 &&
+      diceCount[2] > 0 &&
+      diceCount[3] > 0 &&
+      diceCount[4] > 0 &&
+      diceCount[5] > 0) ||
+    (diceCount[2] > 0 &&
+      diceCount[3] > 0 &&
+      diceCount[4] > 0 &&
+      diceCount[5] > 0 &&
+      diceCount[6] > 0)
   ) {
     return true;
   }

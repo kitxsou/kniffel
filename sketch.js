@@ -2,6 +2,10 @@ import drawStartScreen, { startButton } from "./screens/startScreen.js";
 import drawGameScreen, {
   threeOfAKindCell,
   fourOfAKindCell,
+  chanceCell,
+  kniffelCell,
+  smallStraightCell,
+  longStraightCell,
 } from "./screens/gameScreen.js";
 import drawEndScreen, { restartButton } from "./screens/endScreen.js";
 import {
@@ -49,4 +53,8 @@ window.mouseClicked = function () {
   restartIngameButton.mouseClicked();
   threeOfAKindCell.mouseClicked();
   fourOfAKindCell.mouseClicked();
+  chanceCell.mouseClicked();
+  kniffelCell.mouseClicked();
+  smallStraightCell.mouseClicked();
+  longStraightCell.mouseClicked();
 };
