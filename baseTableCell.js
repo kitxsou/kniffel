@@ -2,7 +2,7 @@ import Button from "./button.js";
 
 export default class BaseTableCell extends Button {
   constructor(x, y, title, calculateValue) {
-    super(x, y, 35, 25);
+    super(x, y, 40, 25);
     this.calculateValue = calculateValue;
     this.title = title;
   }

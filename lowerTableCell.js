@@ -2,13 +2,14 @@ import Button from "./button.js";
 import { clearCount } from "./screens/gameScreen.js";
 
 export class LowerTableCell extends Button {
-  constructor(x, y, dice, title, canBeFilled) {
-    super(x, y, 35, 25);
+  constructor(x, y, dice, title, canBeFilled, calculateValue) {
+    super(x, y, 40, 25);
     this.dice = dice;
     this.value = 0;
     this.title = title;
     this.isCrossed = false;
     this.canBeFilled = canBeFilled;
+    this.calculateValue = calculateValue;
   }
 
   display() {
@@ -58,13 +59,7 @@ export class LowerTableCell extends Button {
       return;
     }
 
-    let newValue = 0;
-
-    for (let currentDice of this.dice) {
-      newValue += currentDice.value;
-    }
-
-    this.value = newValue;
+    this.value = this.calculateValue();
     this.resetDice();
   }
 

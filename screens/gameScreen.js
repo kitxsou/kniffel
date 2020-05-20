@@ -17,16 +17,13 @@ export let allDice = [
 export let rollAllButton = new RollAllButton(0, 700, 220, 90, "roll", allDice);
 export let restartIngameButton = new RestartButton(0, 820);
 
-export let tableCells = [
+export let upperTableCells = [
   new TableCell(-500, windowHeight / 5, allDice, 1),
   new TableCell(-500, windowHeight / 5 + 30, allDice, 2),
   new TableCell(-500, windowHeight / 5 + 60, allDice, 3),
   new TableCell(-500, windowHeight / 5 + 90, allDice, 4),
   new TableCell(-500, windowHeight / 5 + 120, allDice, 5),
   new TableCell(-500, windowHeight / 5 + 150, allDice, 6),
-  // new TableCell(-500, windowHeight / 5 + 180, allDice, "total score"),
-  // new TableCell(-500, windowHeight / 5 + 210, allDice, "bonus"),
-  // new TableCell(-500, windowHeight / 5 + 260, allDice, "total upper"),
 ];
 
 let sumTableCell = new BaseTableCell(
@@ -35,17 +32,33 @@ let sumTableCell = new BaseTableCell(
   "total score",
   sumOfAllTableCells
 );
+
 let bonusTableCell = new BaseTableCell(
   -500,
   windowHeight / 5 + 210,
   "bonus",
   addBonusToSum
 );
+
 let totalUpperTableCell = new BaseTableCell(
   -500,
   windowHeight / 5 + 260,
-  "total upper",
+  "total upper section",
   totalUpperSum
+);
+
+let totalLowerTableCell = new BaseTableCell(
+  -500,
+  windowHeight / 5 + 550,
+  "total lower section",
+  totalLowerSum
+);
+
+let grandTotalTableCell = new BaseTableCell(
+  -500,
+  windowHeight / 5 + 620,
+  "GRAND TOTAL",
+  grandTotalSum
 );
 
 let topColor = color(117, 143, 189); //87, 71, 67
@@ -78,6 +91,10 @@ function table() {
   strokeWeight(4);
   stroke(255);
   line(510, windowHeight / 5 + 235, 200, windowHeight / 5 + 235);
+  line(510, windowHeight / 5 + 525, 200, windowHeight / 5 + 525);
+  //stroke(59, 50, 84);
+  line(510, windowHeight / 5 + 290, 200, windowHeight / 5 + 290);
+  line(510, windowHeight / 5 + 580, 200, windowHeight / 5 + 580);
 
   noStroke();
   textFont(mainFont);
@@ -106,16 +123,6 @@ function gradient(topColor, bottomColor) {
   pop();
 }
 
-function cloud() {
-  push();
-  noStroke();
-  fill(255);
-  ellipse(width / 2, (height / 8) * 7, 200, 100);
-  ellipse(width / 2 - 250, (height / 8) * 7, 100, 50);
-  ellipse(width / 2 + 250, (height / 8) * 7, 100, 50);
-  pop();
-}
-
 export default function () {
   if (hasFinished()) {
     setCurrentScreen("end");
@@ -132,30 +139,28 @@ export default function () {
   restartIngameButton.display();
 
   table();
-  //cloud();
 
-  for (var currentTableCell of tableCells) {
+  for (var currentTableCell of upperTableCells) {
     currentTableCell.display();
   }
-
-  for (var currentDice of allDice) {
-    currentDice.display();
-    currentDice.float();
+  for (var currentTableCell of lowerTableCells) {
+    currentTableCell.display();
   }
 
   sumTableCell.display();
   bonusTableCell.display();
   totalUpperTableCell.display();
-  threeOfAKindCell.display();
-  fourOfAKindCell.display();
-  chanceCell.display();
-  kniffelCell.display();
-  smallStraightCell.display();
-  longStraightCell.display();
+  totalLowerTableCell.display();
+  grandTotalTableCell.display();
+
+  for (var currentDice of allDice) {
+    currentDice.display();
+    currentDice.float();
+  }
 }
 
 function hasFinished() {
-  for (var currentTableCell of tableCells) {
+  for (var currentTableCell of upperTableCells) {
     if (currentTableCell.value === 0 && !currentTableCell.isCrossed) {
       return false;
     }
@@ -164,7 +169,7 @@ function hasFinished() {
 }
 function sumOfAllTableCells() {
   let sum = 0;
-  for (let currentTableCell of tableCells) {
+  for (let currentTableCell of upperTableCells) {
     if (!currentTableCell.isCrossed) {
       sum += currentTableCell.value;
     }
@@ -183,6 +188,20 @@ function addBonusToSum() {
 
 function totalUpperSum() {
   return sumOfAllTableCells() + addBonusToSum();
+}
+
+function totalLowerSum() {
+  let sum = 0;
+  for (let currentTableCell of lowerTableCells) {
+    if (!currentTableCell.isCrossed) {
+      sum += currentTableCell.value;
+    }
+  }
+  return sum;
+}
+
+function grandTotalSum() {
+  return totalUpperSum() + totalLowerSum();
 }
 
 function countDice(allDice) {
@@ -207,57 +226,72 @@ function hasAtLeast(min, diceCount) {
 
 export let threeOfAKindCell = new LowerTableCell(
   -500,
-  windowHeight / 5 + 310,
+  windowHeight / 5 + 320,
   allDice,
   "3 of a kind",
-  hasAtleast3
+  threeOfAKind,
+  sumOfAllDice
 );
 
 export let fourOfAKindCell = new LowerTableCell(
   -500,
-  windowHeight / 5 + 340,
+  windowHeight / 5 + 350,
   allDice,
   "4 of a kind",
-  hasAtleast4
+  fourOfAKind,
+  sumOfAllDice
 );
 
-export let chanceCell = new LowerTableCell(
+export let fullHouseCell = new LowerTableCell(
   -500,
-  windowHeight / 5 + 370,
+  windowHeight / 5 + 380,
   allDice,
-  "chance",
-  function () {
-    return true;
-  }
+  "full house",
+  fullHouse,
+  sumFullHouse
+);
+
+export let smallStraightCell = new LowerTableCell(
+  -500,
+  windowHeight / 5 + 410,
+  allDice,
+  "small straight",
+  smallStraight,
+  sumOfSmallStraight
+);
+
+export let longStraightCell = new LowerTableCell(
+  -500,
+  windowHeight / 5 + 440,
+  allDice,
+  "long straight",
+  longStraight,
+  sumOfLongStraight
 );
 
 export let kniffelCell = new LowerTableCell(
   -500,
-  windowHeight / 5 + 400,
+  windowHeight / 5 + 470,
   allDice,
   "kniffel",
-  kniffel
-);
-export let smallStraightCell = new LowerTableCell(
-  -500,
-  windowHeight / 5 + 430,
-  allDice,
-  "small straight",
-  smallStraight
-);
-export let longStraightCell = new LowerTableCell(
-  -500,
-  windowHeight / 5 + 460,
-  allDice,
-  "long straight",
-  longStraight
+  kniffel,
+  sumKniffel
 );
 
-function hasAtleast3() {
+export let chanceCell = new LowerTableCell(
+  -500,
+  windowHeight / 5 + 500,
+  allDice,
+  "chance",
+  chance,
+  sumOfAllDice
+);
+
+function threeOfAKind() {
   return hasAtLeast(3, countDice(allDice));
 }
 
-function hasAtleast4() {
+function fourOfAKind() {
   return hasAtLeast(4, countDice(allDice));
 }
 
@@ -308,3 +342,60 @@ function longStraight() {
 
   return false;
 }
+
+function fullHouse() {
+  let diceCount = countDice(allDice);
+  let has2 = false;
+  let has3 = false;
+  for (let currentCount of diceCount) {
+    if (currentCount === 2) {
+      has2 = true;
+    }
+    if (currentCount === 3) {
+      has3 = true;
+    }
+  }
+  if (has2 && has3) {
+    return true;
+  }
+  return false;
+}
+
+function chance() {
+  for (var currentDice of allDice) {
+    if (currentDice.value === -1) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function sumOfAllDice() {
+  let newValue = 0;
+  for (let currentDice of allDice) {
+    newValue += currentDice.value;
+  }
+  return newValue;
+}
+
+function sumOfSmallStraight() {
+  return 30;
+}
+function sumOfLongStraight() {
+  return 40;
+}
+function sumKniffel() {
+  return 50;
+}
+function sumFullHouse() {
+  return 25;
+}
+export let lowerTableCells = [
+  threeOfAKindCell,
+  fourOfAKindCell,
+  fullHouseCell,
+  smallStraightCell,
+  longStraightCell,
+  kniffelCell,
+  chanceCell,
+];

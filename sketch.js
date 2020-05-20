@@ -11,12 +11,13 @@ import drawEndScreen, { restartButton } from "./screens/endScreen.js";
 import {
   allDice,
   rollAllButton,
-  tableCells,
+  upperTableCells,
   restartIngameButton,
 } from "./screens/gameScreen.js";
 
 export var myFont;
 export var mainFont;
+export var mainFontDif;
 var currentScreen = "start";
 
 export function setCurrentScreen(newScreen) {
@@ -26,6 +27,7 @@ export function setCurrentScreen(newScreen) {
 window.preload = function () {
   myFont = loadFont("assets/Montserrat-ExtraBold.ttf");
   mainFont = loadFont("assets/Subway-Black.ttf");
+  mainFontDif = loadFont("assets/Subway-Shadow.ttf");
 };
 
 window.draw = function () {
@@ -43,7 +45,7 @@ window.mouseClicked = function () {
     currentDice.mouseClicked();
   }
 
-  for (var currentTableCell of tableCells) {
+  for (var currentTableCell of upperTableCells) {
     currentTableCell.mouseClicked();
   }
 

@@ -3,7 +3,7 @@ import { clearCount } from "./screens/gameScreen.js";
 
 export default class TableCell extends Button {
   constructor(x, y, dice, eyeNumber) {
-    super(x, y, 35, 25);
+    super(x, y, 40, 25);
     this.dice = dice;
     this.eyeNumber = eyeNumber;
     this.value = 0;
