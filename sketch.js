@@ -1,7 +1,15 @@
 import drawStartScreen, { startButton } from "./screens/startScreen.js";
-import drawGameScreen from "./screens/gameScreen.js";
+import drawGameScreen, {
+  threeOfAKindCell,
+  fourOfAKindCell,
+} from "./screens/gameScreen.js";
 import drawEndScreen, { restartButton } from "./screens/endScreen.js";
-import { allDice, rollAllButton, tableCells } from "./screens/gameScreen.js";
+import {
+  allDice,
+  rollAllButton,
+  tableCells,
+  restartIngameButton,
+} from "./screens/gameScreen.js";
 
 export var myFont;
 export var mainFont;
@@ -38,4 +46,7 @@ window.mouseClicked = function () {
   rollAllButton.mouseClicked();
   startButton.mouseClicked();
   restartButton.mouseClicked();
+  restartIngameButton.mouseClicked();
+  threeOfAKindCell.mouseClicked();
+  fourOfAKindCell.mouseClicked();
 };

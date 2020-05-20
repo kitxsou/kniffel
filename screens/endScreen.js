@@ -10,7 +10,7 @@ export default function () {
   pop();
 }
 
-class RestartButton extends Button {
+export class RestartButton extends Button {
   constructor(xOffset, y) {
     super(xOffset, y, 200, 100, 21, 21, 21);
   }
@@ -23,13 +23,13 @@ class RestartButton extends Button {
     strokeWeight(8);
     rectMode(CENTER);
     fill(168, 216, 234);
-    rect(this.x, this.y, this.width, this.height, 30);
+    //rect(this.x, this.y, this.width, this.height, 30);
     noStroke();
     fill(255);
-    rect(this.x, this.y - 9, this.width - 13, this.height - 30, 25);
-    fill(219, 125, 204);
+    //rect(this.x, this.y - 9, this.width - 13, this.height - 30, 25);
+    //fill(219, 125, 204);
     textAlign(CENTER);
-    textSize(30);
+    textSize(40);
     textFont(mainFont);
     text("restart game", this.x, this.y);
     pop();
