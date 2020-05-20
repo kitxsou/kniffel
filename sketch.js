@@ -1,12 +1,7 @@
 import drawStartScreen, { startButton } from "./screens/startScreen.js";
 import drawGameScreen from "./screens/gameScreen.js";
 import drawEndScreen, { restartButton } from "./screens/endScreen.js";
-import {
-  allDice,
-  rollAllButton,
-  resetAllButton,
-  tableCells,
-} from "./screens/gameScreen.js";
+import { allDice, rollAllButton, tableCells } from "./screens/gameScreen.js";
 
 export var myFont;
 export var mainFont;

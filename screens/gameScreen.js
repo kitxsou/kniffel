@@ -1,6 +1,5 @@
 import Dice from "../dice.js";
 import RollAllButton from "../rollAllButton.js";
-import ResetAllButton from "../resetAllButton.js";
 import TableCell from "../tableCell.js";
 import { myFont, setCurrentScreen, mainFont } from "../sketch.js";
 import BaseTableCell from "../baseTableCell.js";
@@ -14,14 +13,14 @@ export let allDice = [
 ];
 
 export let rollAllButton = new RollAllButton(0, 700, 220, 90, "roll", allDice);
-export let resetAllButton = new ResetAllButton(
-  0,
-  820,
-  220,
-  90,
-  "reset",
-  allDice
-);
+// export let resetAllButton = new ResetAllButton(
+//   0,
+//   820,
+//   220,
+//   90,
+//   "reset",
+//   allDice
+// );
 
 export let tableCells = [
   new TableCell(-500, windowHeight / 5, allDice, 1),
