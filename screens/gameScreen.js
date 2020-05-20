@@ -49,6 +49,14 @@ export function increaseCount() {
   count++;
 }
 
+export function isEnabled() {
+  if (count < 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function table() {
   push();
   rectMode(CENTER);
@@ -109,9 +117,8 @@ export default function () {
 
   gradient(topColor, bottomColor);
 
-  if (count < 3) {
-    rollAllButton.display();
-  }
+  rollAllButton.display();
+
   resetAllButton.display();
   table();
   //cloud();
