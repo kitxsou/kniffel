@@ -24,7 +24,7 @@ export default class RollAllButton extends Button {
     stroke(59, 50, 84, this.alpha);
     strokeWeight(8);
     rectMode(CENTER);
-    fill(168, 216, 234, this.alpha);
+    fill(169, 191, 232, this.alpha);
     rect(this.x, this.y, this.width, this.height, 30);
     noStroke();
     fill(255, this.alpha);

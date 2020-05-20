@@ -22,7 +22,7 @@ export class LowerTableCell extends Button {
     //strokeWeight(6);
 
     if (this.canBeFilled()) {
-      fill(169, 198, 245);
+      fill(185, 197, 240);
     } else {
       fill(245, 178, 159);
     }

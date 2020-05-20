@@ -20,10 +20,10 @@ class StartButton extends Button {
     this.updatePosition();
 
     push();
-    stroke(59, 50, 84);
+    stroke(102, 79, 130);
     strokeWeight(8);
     rectMode(CENTER);
-    fill(168, 216, 234);
+    fill(169, 191, 232);
     rect(this.x, this.y, this.width, this.height, 30);
     noStroke();
     fill(255);
@@ -39,7 +39,7 @@ class StartButton extends Button {
     fill(242, 150, 181);
     textFont(mainFont);
     textSize(30);
-    text("start game", this.x, this.y);
+    text("start game", this.x, this.y - 5);
 
     pop();
   }

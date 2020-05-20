@@ -37,7 +37,7 @@ export default class Dice extends Button {
     stroke(59, 50, 84);
     point(this.x - 40, this.y + 35);
     point(this.x + 40, this.y + 35);
-    if (this.value === 1 || this.value === 6) {
+    if (this.value === 6) {
       push();
       noFill();
       translate(this.x, this.y + 20);
