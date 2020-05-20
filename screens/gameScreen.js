@@ -3,6 +3,8 @@ import RollAllButton from "../rollAllButton.js";
 import TableCell from "../tableCell.js";
 import { myFont, setCurrentScreen, mainFont } from "../sketch.js";
 import BaseTableCell from "../baseTableCell.js";
+import { RestartButton } from "./endScreen.js";
+import { BasicClickTableCell } from "../lowerTableCell.js";
 
 export let allDice = [
   new Dice(0 - 180, 240, 155, 135, 204),
@@ -13,14 +15,7 @@ export let allDice = [
 ];
 
 export let rollAllButton = new RollAllButton(0, 700, 220, 90, "roll", allDice);
-// export let resetAllButton = new ResetAllButton(
-//   0,
-//   820,
-//   220,
-//   90,
-//   "reset",
-//   allDice
-// );
+export let restartIngameButton = new RestartButton(0, 820);
 
 export let tableCells = [
   new TableCell(-500, windowHeight / 5, allDice, 1),
@@ -134,6 +129,8 @@ export default function () {
   gradient(topColor, bottomColor);
 
   rollAllButton.display();
+  restartIngameButton.display();
+
   table();
   //cloud();
 
@@ -141,14 +138,16 @@ export default function () {
     currentTableCell.display();
   }
 
-  sumTableCell.display();
-  bonusTableCell.display();
-  totalUpperTableCell.display();
-
   for (var currentDice of allDice) {
     currentDice.display();
     currentDice.float();
   }
+
+  sumTableCell.display();
+  bonusTableCell.display();
+  totalUpperTableCell.display();
+  threeOfAKindCell.display();
+  fourOfAKindCell.display();
 }
 
 function hasFinished() {
@@ -180,4 +179,98 @@ function addBonusToSum() {
 
 function totalUpperSum() {
   return sumOfAllTableCells() + addBonusToSum();
+}
+
+function countDice(allDice) {
+  let diceCount = [0, 0, 0, 0, 0, 0, 0];
+
+  console.log(allDice[0]);
+
+  for (let currentDice of allDice) {
+    diceCount[currentDice.value]++;
+  }
+  return diceCount;
+}
+
+function hasAtLeast(min, diceCount) {
+  for (let currentCount of diceCount) {
+    if (currentCount >= min) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export let threeOfAKindCell = new BasicClickTableCell(
+  -500,
+  windowHeight / 5 + 310,
+  allDice,
+  "3 of a kind",
+  hasAtleast3
+);
+
+export let fourOfAKindCell = new BasicClickTableCell(
+  -500,
+  windowHeight / 5 + 370,
+  allDice,
+  "4 of a kind",
+  hasAtleast4
+);
+
+export let chanceCell = new BasicClickTableCell(
+  -500,
+  windowHeight / 5 + 370,
+  allDice,
+  "4 of a kind",
+  function () {
+    return true;
+  }
+);
+
+function hasAtleast3() {
+  return hasAtLeast(3, countDice(allDice));
+}
+
+function hasAtleast4() {
+  return hasAtLeast(4, countDice(allDice));
+}
+
+function kniffel() {
+  return hasAtLeast(5, countDice(allDice));
+}
+
+function smallStraight() {
+  let diceCount = countDice(allDice);
+
+  if (
+    (diceCount[1] > 0 &&
+      diceCount[2] > 0 &&
+      diceCount[3] > 0 &&
+      diceCount[4] > 0) ||
+    (diceCount[2] > 0 &&
+      diceCount[3] > 0 &&
+      diceCount[4] > 0 &&
+      diceCount[5] > 0)
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+function longStraight() {
+  let diceCount = countDice(allDice);
+
+  if (
+    diceCount[1] > 0 &&
+    diceCount[2] > 0 &&
+    diceCount[3] > 0 &&
+    diceCount[4] > 0 &&
+    diceCount[5] > 0
+  ) {
+    return true;
+  }
+
+  return false;
 }
