@@ -22,7 +22,7 @@ export default class TableCell extends Button {
     if (this.canBeFilled()) {
       fill(169, 198, 245);
     } else {
-      fill(245, 183, 166);
+      fill(245, 178, 159);
     }
 
     noStroke();

@@ -16,7 +16,7 @@ export default class BaseTableCell extends Button {
     // stroke(44, 37, 64);
     //strokeWeight(6);
 
-    fill(245, 183, 166);
+    fill(232, 114, 128);
 
     noStroke();
     rect(this.x, this.y, this.width, this.height, 7);
