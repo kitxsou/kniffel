@@ -6,6 +6,7 @@ import drawGameScreen, {
   kniffelCell,
   smallStraightCell,
   longStraightCell,
+  lowerTableCells,
 } from "./screens/gameScreen.js";
 import drawEndScreen, { restartButton } from "./screens/endScreen.js";
 import {
@@ -18,7 +19,7 @@ import {
 export var myFont;
 export var mainFont;
 export var mainFontDif;
-var currentScreen = "start";
+var currentScreen = "end";
 
 export function setCurrentScreen(newScreen) {
   currentScreen = newScreen;
@@ -48,15 +49,12 @@ window.mouseClicked = function () {
   for (var currentTableCell of upperTableCells) {
     currentTableCell.mouseClicked();
   }
+  for (var currentTableCell of lowerTableCells) {
+    currentTableCell.mouseClicked();
+  }
 
   rollAllButton.mouseClicked();
   startButton.mouseClicked();
   restartButton.mouseClicked();
   restartIngameButton.mouseClicked();
-  threeOfAKindCell.mouseClicked();
-  fourOfAKindCell.mouseClicked();
-  chanceCell.mouseClicked();
-  kniffelCell.mouseClicked();
-  smallStraightCell.mouseClicked();
-  longStraightCell.mouseClicked();
 };

@@ -13,7 +13,7 @@ export default function () {
 
 class StartButton extends Button {
   constructor(xOffset, y) {
-    super(xOffset, y, 200, 100, 21, 21, 21);
+    super(xOffset, y, 240, 100);
   }
 
   display() {

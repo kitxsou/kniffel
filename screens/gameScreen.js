@@ -15,7 +15,7 @@ export let allDice = [
 ];
 
 export let rollAllButton = new RollAllButton(0, 700, 220, 90, "roll", allDice);
-export let restartIngameButton = new RestartButton(0, 820);
+export let restartIngameButton = new RestartButton(0, 850);
 
 export let upperTableCells = [
   new TableCell(-500, windowHeight / 5, allDice, 1),
@@ -105,6 +105,17 @@ function table() {
   pop();
 }
 
+function rounds() {
+  push();
+  noStroke();
+  textFont(mainFont);
+  textSize(30);
+  textAlign(CENTER);
+  fill(255);
+  text("rolls left: " + (3 - count), windowWidth / 2 + 600, windowHeight / 7);
+  pop();
+}
+
 function gradient(topColor, bottomColor) {
   push();
   var startColor = topColor;
@@ -136,9 +147,10 @@ export default function () {
   gradient(topColor, bottomColor);
 
   rollAllButton.display();
-  restartIngameButton.display();
+  restartIngameButton.displayInGame();
 
   table();
+  rounds();
 
   for (var currentTableCell of upperTableCells) {
     currentTableCell.display();
@@ -160,7 +172,8 @@ export default function () {
 }
 
 function hasFinished() {
-  for (var currentTableCell of upperTableCells) {
+  for (var currentTableCell of [...upperTableCells, ...lowerTableCells]) {
+    //put everything of both arrays in 1 array :0
     if (currentTableCell.value === 0 && !currentTableCell.isCrossed) {
       return false;
     }
@@ -200,7 +213,7 @@ function totalLowerSum() {
   return sum;
 }
 
-function grandTotalSum() {
+export function grandTotalSum() {
   return totalUpperSum() + totalLowerSum();
 }
 
