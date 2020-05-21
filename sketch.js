@@ -19,7 +19,7 @@ import {
 export var myFont;
 export var mainFont;
 export var mainFontDif;
-var currentScreen = "end";
+var currentScreen = "start";
 
 export function setCurrentScreen(newScreen) {
   currentScreen = newScreen;
