@@ -21,7 +21,7 @@ export class LowerTableCell extends Button {
     // stroke(44, 37, 64);
     //strokeWeight(6);
 
-    if (this.canBeFilled()) {
+    if (this.value === 0 && !this.isCrossed && this.canBeFilled()) {
       fill(185, 197, 240);
     } else {
       fill(245, 178, 159);

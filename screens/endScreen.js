@@ -4,8 +4,9 @@ import { grandTotalSum } from "./gameScreen.js";
 
 export default function () {
   push();
+  gradient(topColor, bottomColor);
   fill(255);
-  textSize(80);
+  textSize(90);
   textAlign(CENTER);
   textFont(mainFontDif);
   text("Done! \n Final Score: " + grandTotalSum(), width / 2, height / 3);
@@ -44,7 +45,6 @@ export class RestartButton extends Button {
 
     push();
 
-    background(46, 47, 105, 80);
     stroke(102, 79, 130);
     strokeWeight(8);
     rectMode(CENTER);
@@ -65,6 +65,27 @@ export class RestartButton extends Button {
   clicked() {
     window.location.reload();
   }
+}
+
+let topColor = color(117, 143, 189); //87, 71, 67
+let bottomColor = color(224, 146, 182);
+
+function gradient(topColor, bottomColor) {
+  push();
+  var startColor = topColor;
+  var endColor = bottomColor;
+  var gradientX = 0; //
+  var gradientY = 0; // rectangle of gradient box
+  var w = width; //
+  var h = height; //
+
+  for (var i = gradientY; i <= gradientY + h; i = i + 1.0) {
+    var gradientProgress = map(i, gradientY, gradientY + h, 0, 0.9);
+    var gradientColor = lerpColor(startColor, endColor, gradientProgress);
+    stroke(gradientColor);
+    line(gradientX, i, gradientX + w, i);
+  }
+  pop();
 }
 
 export let restartButton = new RestartButton(0, (windowHeight / 4) * 2.4);
