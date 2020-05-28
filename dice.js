@@ -1,5 +1,4 @@
 import Button from "./button.js";
-import { myFont } from "../sketch.js";
 import { mainFont } from "./sketch.js";
 
 export default class Dice extends Button {
