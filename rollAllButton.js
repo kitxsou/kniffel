@@ -1,6 +1,6 @@
 import Button from "./button.js";
 import { increaseCount, isEnabled } from "./screens/gameScreen.js";
-import { myFont } from "../sketch.js";
+import { myFont } from "./sketch.js";
 
 export default class RollAllButton extends Button {
   constructor(x, y, width, height, title, dice) {
